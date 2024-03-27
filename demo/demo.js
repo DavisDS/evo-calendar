@@ -2,49 +2,48 @@ var defaultTheme = getRandom(4);
 
 var today = new Date();
 
-var events = [ {
-    id: "imwyx6S",
-    name: "Event #3",
-    description: "Lorem ipsum dolor sit amet.",
-    date: today.getMonth() + 1 + "/18/" + today.getFullYear(),
-    type: "event"
-}, {
-    id: "9jU6g6f",
-    name: "Holiday #1",
-    description: "Lorem ipsum dolor sit amet.",
-    date: today.getMonth() + 1 + "/10/" + today.getFullYear(),
-    type: "holiday"
-}, {
-    id: "0g5G6ja",
-    name: "Event #1",
-    description: "Lorem ipsum dolor sit amet.",
-    date: [ today.getMonth() + 1 + "/2/" + today.getFullYear(), today.getMonth() + 1 + "/5/" + today.getFullYear() ],
-    type: "event",
-    everyYear: !0
-}, {
-    id: "y2u7UaF",
-    name: "Holiday #3",
-    description: "Lorem ipsum dolor sit amet.",
-    date: today.getMonth() + 1 + "/23/" + today.getFullYear(),
-    type: "holiday"
-}, {
-    id: "dsu7HUc",
-    name: "Birthday #1",
-    description: "Lorem ipsum dolor sit amet.",
-    date: new Date(),
-    type: "birthday"
-}, {
-    id: "dsu7HUc",
-    name: "Birthday #2",
-    description: "Lorem ipsum dolor sit amet.",
-    date: today.getMonth() + 1 + "/27/" + today.getFullYear(),
-    type: "birthday"
-} ];
+var events = [
+  {
+      id: "imwyx6S",
+      name: "Event #3",
+      description: "Lorem ipsum dolor sit amet.",
+      date: today.getMonth() + 1 + "/18/" + today.getFullYear(),
+      type: "event"
+  }, {
+      id: "9jU6g6f",
+      name: "Holiday #1",
+      description: "Lorem ipsum dolor sit amet.",
+      date: today.getMonth() + 1 + "/10/" + today.getFullYear(),
+      type: "holiday"
+  }, {
+      id: "0g5G6ja",
+      name: "Event #1",
+      description: "Lorem ipsum dolor sit amet.",
+      date: [ today.getMonth() + 1 + "/2/" + today.getFullYear(), today.getMonth() + 1 + "/5/" + today.getFullYear() ],
+      type: "event",
+      everyYear: !0
+  }, {
+      id: "y2u7UaF",
+      name: "Holiday #3",
+      description: "Lorem ipsum dolor sit amet.",
+      date: today.getMonth() + 1 + "/23/" + today.getFullYear(),
+      type: "holiday"
+  }, {
+      id: "dsu7HUc",
+      name: "Birthday #1",
+      description: "Lorem ipsum dolor sit amet.",
+      date: today,
+      type: "birthday"
+  }, {
+      id: "dsu7HUc",
+      name: "Birthday #2",
+      description: "Lorem ipsum dolor sit amet.",
+      date: today.getMonth() + 1 + "/27/" + today.getFullYear(),
+      type: "birthday"
+  }
+];
 
 var active_events = [];
-
-var week_date = [];
-
 var curAdd, curRmv;
 
 function getRandom(a) {
@@ -67,39 +66,107 @@ function getWeeksInMonth(a, b) {
     return c;
 }
 
-week_date = getWeeksInMonth(today.getMonth(), today.getFullYear())[2];
+var week_date = getWeeksInMonth(today.getMonth(), today.getFullYear())[2];
+var week_date2 = getWeeksInMonth(today.getMonth(), today.getFullYear())[3];
+var week_date3 = getWeeksInMonth(today.getMonth(), today.getFullYear())[1];
+
+
+
+var load_events = [
+  [
+    {
+      id: "d8jai7s",
+      name: "Author's Birthday",
+      description: "Author's note: Thank you for using EvoCalendar! :)",
+      date: "February/15/1999",
+      type: "birthday",
+      everyYear: !0
+    }, {
+      id: "sKn89hi",
+      name: "1-Week Coding Bootcamp",
+      description: "Lorem ipsum dolor sit amet.",
+      badge: "5-day event",
+      date: [ today.getMonth() + 1 + "/" + week_date.start + "/" + today.getFullYear(), today.getMonth() + 1 + "/" + week_date.end + "/" + today.getFullYear() ],
+      type: "event",
+      everyYear: !0
+    }, {
+      id: "in8bha4",
+      name: "Holiday #2",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      date: today,
+      type: "holiday"
+    }, {
+      id: "in8bha4",
+      name: "Event #2",
+      date: today,
+      type: "event"
+    }
+  ],
+  [
+    {
+      id: "d8jai7s2",
+      name: "Author's Birthday",
+      description: "Author's note: Thank you for using EvoCalendar! :)",
+      date: "February/15/1999",
+      type: "birthday",
+      everyYear: !0
+    }, {
+      id: "sKn89hi2",
+      name: "1-Week Coding Bootcamp",
+      description: "Lorem ipsum dolor sit amet.",
+      badge: "5-day event",
+      date: [ today.getMonth() + 1 + "/" + week_date2.start + "/" + today.getFullYear(), today.getMonth() + 1 + "/" + week_date2.end + "/" + today.getFullYear() ],
+      type: "event",
+      everyYear: !0
+    }, {
+      id: "in8bha42",
+      name: "Holiday #3",
+      description: "Another Sample Holiday",
+      date: today,
+      type: "holiday"
+    }, {
+      id: "in8bha42",
+      name: "Event #5",
+      date: today,
+      type: "event"
+    }
+  ],
+  [
+    {
+      id: "d8jai7s3",
+      name: "Author's Birthday",
+      description: "Author's note: Thank you for using EvoCalendar! :)",
+      date: "February/15/1999",
+      type: "birthday",
+      everyYear: !0
+    }, {
+      id: "sKn89hi3",
+      name: "1-Week Coding Bootcamp",
+      description: "Lorem ipsum dolor sit amet.",
+      badge: "5-day event",
+      date: [ today.getMonth() + 1 + "/" + week_date3.start + "/" + today.getFullYear(), today.getMonth() + 1 + "/" + week_date3.end + "/" + today.getFullYear() ],
+      type: "event",
+      everyYear: !0
+    }, {
+      id: "in8bha43",
+      name: "Holiday #3",
+      description: "Another Sample Holiday For you!",
+      date: today,
+      type: "holiday"
+    }, {
+      id: "in8bha4265",
+      name: "Event #18",
+      date: today,
+      type: "event"
+    }
+  ]
+]
 
 $(document).ready(function() {
     $("#demoEvoCalendar").evoCalendar({
         format: "MM dd, yyyy",
         titleFormat: "MM",
-        calendarEvents: [{
-            id: "d8jai7s",
-            name: "Author's Birthday",
-            description: "Author's note: Thank you for using EvoCalendar! :)",
-            date: "February/15/1999",
-            type: "birthday",
-            everyYear: !0
-        }, {
-            id: "sKn89hi",
-            name: "1-Week Coding Bootcamp",
-            description: "Lorem ipsum dolor sit amet.",
-            badge: "5-day event",
-            date: [ today.getMonth() + 1 + "/" + week_date.start + "/" + today.getFullYear(), today.getMonth() + 1 + "/" + week_date.end + "/" + today.getFullYear() ],
-            type: "event",
-            everyYear: !0
-        }, {
-            id: "in8bha4",
-            name: "Holiday #2",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            date: today,
-            type: "holiday"
-        }, {
-            id: "in8bha4",
-            name: "Event #2",
-            date: today,
-            type: "event"
-        }]
+        calendarEvents: load_events[getRandom(load_events.length)]
     });
     $("[data-set-theme]").click(function(b) {
         a(b.target);
