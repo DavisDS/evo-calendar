@@ -38,7 +38,7 @@ var events = [
       id: "dsu7HUc",
       name: "Birthday #2",
       description: "Lorem ipsum dolor sit amet.",
-      date: today.getMonth() + 1 + "/27/" + today.getFullYear(),
+      date: today.getMonth() + 1 + "/13/" + today.getFullYear(),
       type: "birthday"
   }
 ];

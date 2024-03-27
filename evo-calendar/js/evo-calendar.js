@@ -1036,10 +1036,13 @@
         var _ = this;
 
         function addEvent(data) {
+            if(!data)
+                return
             if(!data.id) {
                 console.log("%c Event named: \""+data.name+"\" doesn't have a unique ID ", "color:white;font-weight:bold;background-color:#e21d1d;");
             }
 
+            //Format Dates in Event Object
             if (data.date instanceof Array) {
                 for (var j=0; j < data.date.length; j++) {
                     if(isDateValid(data.date[j])) {
@@ -1053,6 +1056,9 @@
             }
             
             if (!_.options.calendarEvents) _.options.calendarEvents = [];
+            if(data.id && _.options.calendarEvents.length > 0){
+                _.removeCalendarEvent(data.id, true);
+            }
             _.options.calendarEvents.push(data);
             // add to date's indicator
             _.addEventIndicator(data);
@@ -1079,13 +1085,12 @@
     };
 
     // v1.0.0 - Remove Calendar Event(s)
-    EvoCalendar.prototype.removeCalendarEvent = function(arr) {
+    EvoCalendar.prototype.removeCalendarEvent = function(arr, internal = false) {
         var _ = this;
 
         function deleteEvent(data) {
-            // Array index
-            var index = _.options.calendarEvents.map(function (event) { return event.id }).indexOf(data);
-            
+            var index = _.options.calendarEvents.findIndex((item) => item.id === data);
+
             if (index >= 0) {
                 var event = _.options.calendarEvents[index];
                 // Remove event from calendar events
@@ -1094,7 +1099,7 @@
                 _.removeEventList(data);
                 // remove event indicator
                 _.removeEventIndicator(event);
-            } else {
+            } else if (!internal) {
                 console.log("%c "+data+": ID not found ", "color:white;font-weight:bold;background-color:#e21d1d;");
             }
         }
