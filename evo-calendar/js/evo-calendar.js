@@ -690,11 +690,13 @@
         eventListEl.find('[data-event-index="'+event_data+'"]').remove();
         if (eventListEl.find('[data-event-index]').length === 0) {
             eventListEl.empty();
+            markup = "<div class='event-empty'>";
             if (_.$active.date === _.$current.date) {
                 markup += '<p>'+_.initials.dates[_.options.language].noEventForToday+'</p>';
             } else {
                 markup += '<p>'+_.initials.dates[_.options.language].noEventForThisDay+'</p>';
             }
+            markup += "</div>";
             eventListEl.append(markup)
         }
     }
@@ -1110,6 +1112,14 @@
         } else { // Single index
             deleteEvent(arr)
         }
+    };
+
+    // v1.1.0 - Replace Calendar Event(s)
+    EvoCalendar.prototype.replaceCalendarEvents = function(arr) {
+        var _ = this;
+
+        _.removeCalendarEvent(_.options.calendarEvents.map(event => event.id), true);
+        _.addCalendarEvent(arr);
     };
 
     // v1.0.0 - Check if date is valid

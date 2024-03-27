@@ -96,7 +96,7 @@ var load_events = [
       date: today,
       type: "holiday"
     }, {
-      id: "in8bha4",
+      id: "in8bha46",
       name: "Event #2",
       date: today,
       type: "event"
@@ -125,7 +125,7 @@ var load_events = [
       date: today,
       type: "holiday"
     }, {
-      id: "in8bha42",
+      id: "in8bha426",
       name: "Event #5",
       date: today,
       type: "event"
@@ -141,7 +141,7 @@ var load_events = [
       everyYear: !0
     }, {
       id: "sKn89hi3",
-      name: "1-Week Coding Bootcamp",
+      name: "1-Week Coding Bootcamp (switched)",
       description: "Lorem ipsum dolor sit amet.",
       badge: "5-day event",
       date: [ today.getMonth() + 1 + "/" + week_date3.start + "/" + today.getFullYear(), today.getMonth() + 1 + "/" + week_date3.end + "/" + today.getFullYear() ],
@@ -150,11 +150,11 @@ var load_events = [
     }, {
       id: "in8bha43",
       name: "Holiday #3",
-      description: "Another Sample Holiday For you!",
+      description: "Another Sample Holiday Again..",
       date: today,
       type: "holiday"
     }, {
-      id: "in8bha4265",
+      id: "in8bha423",
       name: "Event #18",
       date: today,
       type: "event"
@@ -162,11 +162,13 @@ var load_events = [
   ]
 ]
 
+var initial_Events = JSON.parse(JSON.stringify(load_events[getRandom(load_events.length)]));
+
 $(document).ready(function() {
     $("#demoEvoCalendar").evoCalendar({
         format: "MM dd, yyyy",
         titleFormat: "MM",
-        calendarEvents: load_events[getRandom(load_events.length)]
+        calendarEvents: initial_Events
     });
     $("[data-set-theme]").click(function(b) {
         a(b.target);
@@ -188,12 +190,12 @@ $(document).ready(function() {
         if (events.length > 0) $("#addBtn").prop("disabled", !1);
     });
     $("#relBtn").click(function(a) {
-        selectEvents = getRandom(load_events.length);
-        $("#demoEvoCalendar").evoCalendar("addCalendarEvent", events[curAdd]);
-        active_events.push(events[curAdd]);
-        events.splice(curAdd, 1);
-        if (0 === events.length) a.target.disabled = !0;
-        if (active_events.length > 0) $("#removeBtn").prop("disabled", !1);
+        curRel = getRandom(load_events.length);
+        $("#demoEvoCalendar").evoCalendar("replaceCalendarEvents", load_events[curRel]);
+        events = events.concat(active_events);
+        active_events = [];
+        $("#addBtn").prop("disabled", !1);
+        $("#removeBtn").prop("disabled", !0);
     });
     a($("[data-set-theme]")[defaultTheme]);
     function a(a) {
@@ -328,11 +330,51 @@ function showMethodSample(a) {
         break;
 
       case "addCalendarEvent":
-        c = '<br><span class="green">// addCalendarEvent</span><br>' + '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'addCalendarEvent\'</span>, {<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">description</span>: <span class="red">\'Lorem ipsum dolor sit..\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 2020\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span><br>' + "});" + '<br><span class="green">// add multiple events</span><br>' + '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'addCalendarEvent\'</span>, [<br>' + "&#8194;&#8194;&#8194;&#8194;&#8194;{<br>" + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 1965\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">everyYear</span>: <span class="blue">true</span> <span class="green">// optional</span><br>' + "&#8194;&#8194;&#8194;&#8194;&#8194;},<br>" + "&#8194;&#8194;&#8194;&#8194;&#8194;{<br>" + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'asDf87L\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Graduation Day!\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'March 21, 2020\'</span>,<br>' + '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'event\'</span><br>' + "&#8194;&#8194;&#8194;&#8194;&#8194;}<br>" + "]);" + "<br> ";
+        c = '<br><span class="green">// addCalendarEvent</span><br>' + 
+            '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'addCalendarEvent\'</span>, {<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">description</span>: <span class="red">\'Lorem ipsum dolor sit..\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 2020\'</span>,<br>' +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span><br>' + '});' +
+            '<br><span class="green">// add multiple events</span><br>' +
+            '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'addCalendarEvent\'</span>, [<br>' +
+            "&#8194;&#8194;&#8194;&#8194;&#8194;{<br>" +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>' +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>' +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 1965\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">everyYear</span>: <span class="blue">true</span> <span class="green">// optional</span><br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;},<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;{<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'asDf87L\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Graduation Day!\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'March 21, 2020\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'event\'</span><br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;}<br>' + ']);' + 
+            '<br> ';
         break;
-
       case "removeCalendarEvent":
         c = '<br><span class="green">// removeCalendarEvent</span><br>' + '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'removeCalendarEvent\'</span>, <span class="red">\'kNybja6\'</span>);' + "<br> " + '<br><span class="green">// delete multiple event</span><br>' + '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'removeCalendarEvent\'</span>, [<span class="red">\'kNybja6\'</span>, <span class="red">\'asDf87L\'</span>]);' + "<br> ";
+        break;
+
+      case "replaceCalendarEvents":
+        c = '<br><span class="green">// Replace all events</span><br>' +
+            '$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'replaceCalendarEvents\'</span>, [<br>' +
+            "&#8194;&#8194;&#8194;&#8194;&#8194;{<br>" +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>' +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>' +
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 1965\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">everyYear</span>: <span class="blue">true</span> <span class="green">// optional</span><br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;},<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;{<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'asDf87L\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Graduation Day!\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'March 21, 2020\'</span>,<br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'event\'</span><br>' + 
+            '&#8194;&#8194;&#8194;&#8194;&#8194;}<br>' + ']);' + 
+            '<br> ';
         break;
 
       case "destroy":
